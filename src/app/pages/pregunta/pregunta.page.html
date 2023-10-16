@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title class="ion-padding-top ion-text-center">
+    <h1 class="titulo">Sistema de asistencia Duoc UC</h1>
+  </ion-title>
+  
+  <div class="ion-padding-vertical">
+    <ion-card class="ion-text-center ion-padding-vertical">
+      <ion-card-title class="ion-text-center">
+        <ion-label>
+          <h1>Recuperar contraseña</h1>
+          <h2>Paso 2: Responde la pregunta secreta</h2>
+          <h1>{{ usuario.nombreCompleto }}</h1>
+        </ion-label>
+      </ion-card-title>
+
+      <form>
+        <ion-card-content>
+          <ion-item>
+            <ion-label class="ion-text-center"><h2 *ngIf="usuario" style="color:black">{{ usuario.preguntaSecreta }}</h2></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input name="respuesta" label="Escribe aquí tu respuesta" labelPlacement="floating" type="text" [(ngModel)]="usuario.respuestaSecreta"></ion-input>
+          </ion-item>
+          <div class="centrar-boton">
+            <ion-button shape="block" (click)="recuperarContrasena()">Recuperar contraseña</ion-button>
+          </div>
+        </ion-card-content>
+      </form>
+    </ion-card>
+    
+    <div class="ion-text-center">
+      <ion-label>
+        <br>
+        <ion-button shape="round" routerLink="/ingreso" style="max-width: 190px; font-size: 12px;">Iniciar sesión</ion-button>
+      </ion-label>
+    </div>
+  </div>
+</ion-content>
