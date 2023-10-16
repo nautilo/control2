@@ -1,66 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { AnimationController} from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
-import { Usuario } from 'src/app/model/usuario';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-pregunta',
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PreguntaPage implements OnInit {
 
-  public usuario: Usuario;
-  
-  constructor(
-    private activeroute: ActivatedRoute
-  , private router: Router
-  , private alertController: AlertController
-  , private animationController: AnimationController
-  , private toastController: ToastController) {
+  constructor() { }
 
-    this.usuario = new Usuario('', '', '', '', '');
-
-    this.activeroute.queryParams.subscribe(params => { 
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state) {
-          this.usuario = nav.extras.state['usuario'];
-          this.usuario.setRespuestaSecreta('');
-          return;
-        }
-      }
-      this.router.navigate(['/ingreso']);
-      });
-  }
-  public ngOnInit(): void {
+  ngOnInit() {
   }
 
-  public recuperarContrasena(): void {
-    if (this.usuario.respuestaSecreta) {
-      const usu: Usuario | undefined = this.usuario.responderPregunta(this.usuario.preguntaSecreta,this.usuario.respuestaSecreta);
-      if (usu) {
-        const navigationExtras: NavigationExtras = {
-          state: {
-            usuario: usu
-          }
-        };
-        this.router.navigate(['/correcto'], navigationExtras);
-      }else{
-        this.router.navigate(['/incorrecto']);
-      }
-    }else{
-      this.mostrarMensaje("No has ingresado la respuesta.");
-    }
-  }
-
-  async mostrarMensaje(mensaje: string, duracion?: number) {
-    const toast = await this.toastController.create({
-        message: mensaje,
-        duration: duracion? duracion: 2000
-      });
-    toast.present();
-  }
 }

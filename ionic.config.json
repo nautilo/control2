@@ -1,7 +1,7 @@
 {
-  "name": "Control1",
+  "name": "prueba2",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular-standalone"
 }
