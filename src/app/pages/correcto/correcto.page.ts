@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-correcto',
-  templateUrl: './correcto.page.html',
-  styleUrls: ['./correcto.page.scss'],
+  templateUrl: 'correcto.page.html',
+  styleUrls: ['correcto.page.scss'],
+  imports: [IonicModule, CommonModule, FormsModule],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CorrectoPage implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+
   }
 
 }

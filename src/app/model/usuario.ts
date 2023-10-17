@@ -1,121 +1,76 @@
+import { DataBaseService } from '../services/data-base.service';
+import { showAlertDUOC } from "../tools/message-routines";
+
 export class Usuario {
-    public correo: string;
-    public password: string;
-    public nombreCompleto: string;
-    public preguntaSecreta: string;
-    public respuestaSecreta: string;
-  
-    constructor(
-      correo: string,
-      password: string,
-      nombreCompleto: string,
-      preguntaSecreta: string,
-      respuestaSecreta: string,
-    ) {
-      this.correo = correo;
-      this.password = password;
-      this.nombreCompleto = nombreCompleto;
-      this.preguntaSecreta = preguntaSecreta;
-      this.respuestaSecreta = respuestaSecreta;
-    }
-  
-    public getCorreo(): string {
-      return this.correo;
-    }
-  
-    public getPassword(): string {
-      return this.password;
-    }
-  
-    public setUsuario(correo: string, password: string): void {
-      this.correo = correo;
-      this.password = password;
-    }
 
-    public setRespuestaSecreta(respuestaSecreta: string): void {
-      this.respuestaSecreta = respuestaSecreta;
-    }
-  
-    public listaUsuariosValidos(): Usuario[] {
-      const lista = [];
-      lista.push(
-        new Usuario(
-          'atorres@duocuc.cl',
-          '1234',
-          'Ana Torres Leiva',
-          'Nombre de su mascota',
-          'gato'
-        )
-      );
-      lista.push(
-        new Usuario(
-          'avalenzuela@duocuc.cl',
-          'qwer',
-          'Alberto Valenzuela Nuñez',
-          'Nombre de su mejor amigo',
-          'juanito'
-        )
-      );
-      lista.push(
-        new Usuario(
-          'cfuentes@duocuc.cl',
-          'asdf',
-          'Carla Fuentes González',
-          'Lugar de nacimiento de su madre',
-          'Valparaíso'
-        )
-      );
-      return lista;
-    }
-  
-    public buscarUsuarioValido(correo: string, password: string): Usuario | undefined {
-      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
-        (usu) => usu.correo === correo && usu.password === password
-      );
-      return usuario;
-    }
+  correo = '';
+  password = '';
+  nombre = '';
+  apellido = '';
+  preguntaSecreta = '';
+  respuestaSecreta = '';
+  sesionActiva = '';
 
-    public buscarUsuarioPorCorreo(correo:string): Usuario | undefined{
-      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
-        (usu)=> usu.correo === correo
-      );
-      return usuario;
-    }
+  constructor() { }
 
-    public responderPregunta(preguntaSecreta: string, respuestaSecreta: string): Usuario | undefined{
-      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
-        (usu)=>usu.preguntaSecreta === preguntaSecreta && usu.respuestaSecreta === respuestaSecreta
-      );
-      return usuario;
-    }
-
-    public validarCorreo(): string {
-      const patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const lastCharacter = parseInt(this.correo.charAt(this.correo.length - 1), 10);
-      if (patronCorreo.test(this.correo) || !isNaN(lastCharacter)) {
-        return '';
-      } else {
-        return 'El correo ingresado no tiene un formato válido.';
-      }
-    }
-  
-    public validarPassword(): string {
-      if (this.password.trim() === '') {
-        return 'Para entrar al sistema debe ingresar una contraseña.';
-      }
-      if (this.password.length !== 4) {
-        return 'La contraseña debe tener cuatro caracteres.';
-      }
-      return '';
-    }
-  
-    public validarCredenciales(): string {
-      const usu: Usuario | undefined = this.buscarUsuarioValido(this.correo, this.password);
-      return usu ? '' : 'Ingresaste un correo o una contraseña errónea.';
-    }
-  
-    public validarUsuario(): string {
-      return this.validarCorreo() || this.validarPassword() || this.validarCredenciales();
-    }
+  setUsuario(correo: string, password: string, nombre: string, apellido: string, preguntaSecreta: string,
+    respuestaSecreta: string, sesionActiva: string)
+  {
+    this.correo = correo;
+    this.password = password;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.preguntaSecreta = preguntaSecreta;
+    this.respuestaSecreta = respuestaSecreta;
+    this.sesionActiva = sesionActiva;
   }
+
+  static getUsuario(correo: string, password: string, nombre: string, apellido: string, preguntaSecreta: string,
+    respuestaSecreta: string, sesionActiva: string)
+  {
+    const usu = new Usuario();
+    usu.setUsuario(correo, password, nombre, apellido, preguntaSecreta, respuestaSecreta, sesionActiva)
+    return usu;
+  }
+
+  validarCampoRequerido(nombreCampo: string, valor: string) {
+    if (valor.trim() === '') return `El campo "${nombreCampo}" debe tener un valor.`;
+    return '';
+  }
+
+  validarCorreo(correo: string): string {
+    return this.validarCampoRequerido('correo', correo);
+  }
+
+  validarPassword(password: string): string {
+    return this.validarCampoRequerido('contraseña', password);
+  }
+
+  validarNombre(nombre: string): string {
+    return this.validarCampoRequerido('nombre', nombre);
+  }
+
+  validarApellido(apellido: string): string {
+    return this.validarCampoRequerido('apellido', apellido);
+  }
+
+  validarPreguntaSecreta(preguntaSecreta: string): string {
+    return this.validarCampoRequerido('pregunta secreta', preguntaSecreta);
+  }
+
+  validarRespuestaSecreta(respuestaSecreta: string): string {
+    return this.validarCampoRequerido('respuesta secreta', respuestaSecreta);
+  }
+
+  validarPropiedadesUsuario(correo: string, password: string, nombre: string, apellido: string
+    , preguntaSecreta: string, respuestaSecreta: string): string {
+    return this.validarCorreo(correo) 
+      || this.validarPassword(password)
+      || this.validarNombre(nombre)
+      || this.validarApellido(apellido)
+      || this.validarPreguntaSecreta(preguntaSecreta)
+      || this.validarRespuestaSecreta(respuestaSecreta)
+  }
+
+}
   

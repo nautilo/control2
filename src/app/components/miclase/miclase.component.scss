@@ -1,0 +1,20 @@
+h1, h2, h3, p{
+  color:white;
+}
+ion-card{
+  --background: rgba(0,0,0,0.5);
+}
+.tabla {
+  border: 1px solid #ccc; /* Establece un borde gris para el contenedor de la tabla */
+  border-radius: 5px; /* Añade un radio de borde para suavizar las esquinas */
+  background-color: white; /* Establece el fondo de la tabla como blanco */
+}
+
+ion-row {
+  border-bottom: 1px solid #ccc; /* Establece un borde inferior gris para cada fila */
+}
+
+ion-col {
+  padding: 10px; /* Agrega un relleno interno a las celdas para separar el contenido del borde */
+  text-align: left;
+}

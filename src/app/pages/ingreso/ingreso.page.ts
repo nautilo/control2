@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-ingreso',
@@ -12,9 +13,16 @@ import { IonicModule } from '@ionic/angular';
 })
 export class IngresoPage implements OnInit {
 
-  constructor() { }
+  correo = 'atorres@duocuc.cl';
+  password = '1234';
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  ingresar() {
+    this.authService.login(this.correo, this.password);
   }
 
 }
