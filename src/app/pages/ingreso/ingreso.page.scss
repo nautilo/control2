@@ -1,32 +1,17 @@
-h1, h2, h3, p{
-  color:white;
-}
-ion-content{
-  --background: url("../../../assets/img/background.jpg") no-repeat center center / cover;
-}
-ion-toolbar {
-  text-align: center;
-  --ion-toolbar-background: #021E2F;
-}
-ion-card{
-  --background: rgba(0,0,0,0.5);
-}
-ion-button{
-  --background: #F1B634;
+.centrado-vertical {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.logo{
-  max-width: 200px;
+.marco {
+  border: 3px solid gray;
+  padding: 16px;
 }
-.recuperar-contrasena{
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-.contenedor{
-  margin-top: 20%;
-}
-.titulo{
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 50px;
-  font-size: 22px;
+
+.alinear-centro {
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
