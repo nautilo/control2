@@ -1,0 +1,39 @@
+h1,h2{
+    color: white;
+}
+.titulo{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    margin-top: 50px;
+    font-size: 22px;
+}
+ion-content{
+    --background: url("../../../assets/img/incorrecto.jpg") no-repeat center center / cover;
+}   
+ion-toolbar {
+    text-align: center;
+    --ion-toolbar-background: #021E2F;
+}
+ion-card{
+    --background: rgba(0,0,0,0.5);
+}
+ion-button{
+    --background: #021E2F;
+    max-width: 300px;
+    margin-top: 20px;
+}
+.centrar-boton{
+    display:flex;
+    justify-content: center;
+}
+.logo{
+    max-width: 200px;
+}
+.recuperar-contrasena{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.img-incorrecto{
+    max-width: 220px;
+    border-radius: 10px;
+}
+

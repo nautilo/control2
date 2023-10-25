@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+import { IonicModule, ToastController } from '@ionic/angular';
+import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-incorrecto',
@@ -12,9 +14,20 @@ import { IonicModule } from '@ionic/angular';
 })
 export class IncorrectoPage implements OnInit {
 
-  constructor() { }
+  public usuario: Usuario;
 
-  ngOnInit() {
+  constructor(private router: Router, private toastController: ToastController) {
+    this.usuario = new Usuario()
   }
 
+  public ngOnInit(): void {
+  }
+
+  async mostrarMensaje(mensaje: string, duracion?: number) {
+    const toast = await this.toastController.create({
+        message: mensaje,
+        duration: duracion? duracion: 2000
+      });
+    toast.present();
+  }
 }
