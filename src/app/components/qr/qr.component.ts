@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { AnimationController, IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { Asistencia } from 'src/app/model/asistencia';
 import { AuthService } from 'src/app/services/auth.service';
@@ -25,6 +25,8 @@ export class QrComponent implements OnInit {
 
   @ViewChild('video') private video!: ElementRef;
   @ViewChild('canvas') private canvas!: ElementRef;
+  @ViewChild('itemNombre',{read:ElementRef}) itemNombre!: ElementRef;
+  @ViewChild('itemBienvenido', { read: ElementRef }) itemBienvenido!: ElementRef;
   @Output() qrCapturado: EventEmitter<string> = new EventEmitter();
 
   usuario = new Usuario();
@@ -35,12 +37,17 @@ export class QrComponent implements OnInit {
   plataforma = 'web';
 
   constructor(
+    private animationController: AnimationController,
     private authService: AuthService,
     private bd: DataBaseService,
     private sqliteService: SQLiteService,
     private readonly ngZone: NgZone) { }
 
   async ngOnInit() {
+    if (this.itemBienvenido && this.itemNombre) {
+      this.animateItem(this.itemBienvenido.nativeElement);
+      this.animateItem(this.itemNombre.nativeElement);
+    }
     this.plataforma = this.sqliteService.platform;
     this.authService.usuarioAutenticado.subscribe((usuario) => {
       if (usuario !== null) {
@@ -48,7 +55,33 @@ export class QrComponent implements OnInit {
       }
     })
   }
+  public ngAfterViewInit(): void {
+    this.animateItem(this.itemBienvenido.nativeElement);
+    this.animateItem(this.itemNombre.nativeElement);
+  }
+  public animateItem(elementRef: any) {
+    // Crear la animación de enfoque (opacity)
+    const focusAnimation = this.animationController
+      .create()
+      .addElement(elementRef)
+      .iterations(1)
+      .duration(1500)
+      .fromTo('opacity', 0, 1);
 
+    // Crear la animación de flotar hacia arriba (translateY)
+    const floatUpAnimation = this.animationController
+      .create()
+      .addElement(elementRef)
+      .iterations(1)
+      .duration(1500)
+      .fromTo('transform', 'translateY(50px)', 'translateY(0px)'); // Cambia -50px según la distancia que desees
+
+    // Combinar las dos animaciones en un grupo
+    const animationGroup = this.animationController.create()
+      .addAnimation([focusAnimation, floatUpAnimation]);
+
+    animationGroup.play();
+  }
   async comenzarEscaneoQR() {
     if (this.plataforma === 'web') {
       this.comenzarEscaneoQRWeb();

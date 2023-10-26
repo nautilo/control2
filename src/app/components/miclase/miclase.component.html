@@ -2,19 +2,19 @@
   <!-- Título del card -->
   <ion-card-title class="ion-text-center">
     <ion-label>
-      <h1>Datos de la asignatura</h1>
+      <h1>Datos de la asistencia</h1>
     </ion-label>
   </ion-card-title>
 
     <!-- Contenido del card -->
     <ion-card-content>
-      <ion-grid class="tabla">
+      <ion-grid class="tabla" *ngIf="asistencia.sede">
         <ion-row>
           <ion-col>
             Sede:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.sede }} -->
+            {{ asistencia.sede }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -22,7 +22,7 @@
             ID de la asignatura:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.idAsignatura }} -->
+            {{ asistencia.idAsignatura }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -30,7 +30,7 @@
             Sección:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.seccion }} -->
+            {{ asistencia.seccion }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -38,7 +38,7 @@
             Nombre de la asignatura:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.nombreAsignatura }} -->
+            {{ asistencia.nombreAsignatura }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -46,7 +46,7 @@
             Nombre del profesor:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.nombreProfesor }} -->
+            {{ asistencia.nombreProfesor }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -54,7 +54,7 @@
             Día:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.dia }} -->
+            {{ asistencia.dia }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -62,7 +62,7 @@
             Bloque de inicio:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.bloqueInicio }} -->
+            {{ asistencia.bloqueInicio }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -70,7 +70,7 @@
             Bloque de término:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.bloqueTermino }} -->
+            {{ asistencia.bloqueTermino }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -78,7 +78,7 @@
             Hora de inicio:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.horaInicio }} -->
+            {{ asistencia.horaInicio }}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -86,10 +86,13 @@
             Hora de término:
           </ion-col>
           <ion-col>
-            <!-- {{ asignatura.horaFin }} -->
+            {{ asistencia.horaFin }}
           </ion-col>
         </ion-row>
       </ion-grid>
+      <div *ngIf="!asistencia.sede">
+        <h3>No has escaneado el código QR para mostrar los datos de la clase.</h3>
+      </div>
     </ion-card-content>
 </ion-card>
 

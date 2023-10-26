@@ -41,6 +41,9 @@ export class CorrectoPage implements OnInit {
   public ngOnInit(): void {
 
   }
+  ingreso(){
+    this.router.navigate(['ingreso']);
+  }
 
   async mostrarMensaje(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({

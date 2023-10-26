@@ -10,16 +10,16 @@
   
   <ion-toolbar>
     <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
-      <ion-segment-button value="qr">
+      <ion-segment-button value="qr" class="tab">
         <ion-label>QR</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="miclase">
+      <ion-segment-button value="miclase" class="tab">
         <ion-label>Mi clase</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="foro">
+      <ion-segment-button value="foro" class="tab">
         <ion-label>Foro</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="misdatos">
+      <ion-segment-button value="misdatos" class="tab">
         <ion-label>Mis datos</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -33,10 +33,8 @@
   <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
   <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
 
-
-    <br>
-    <div class="cerrarsesion">
-    <ion-button (click)="cerrarSesion()" expand="block" fill="clear" shape="round">Cerrar sesión</ion-button>
+    <div class="ion-text-center">
+      <ion-button (click)="cerrarSesion()" shape="round" style="max-width: 190px; font-size: 12px;">Cerrar sesión</ion-button>
     </div>
 
 

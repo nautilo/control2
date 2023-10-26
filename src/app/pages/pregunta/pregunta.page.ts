@@ -17,6 +17,7 @@ import { Usuario } from 'src/app/model/usuario';
 export class PreguntaPage implements OnInit {
 
   public usuario: Usuario;
+  public respuestaSecreta: string = '';
   
   constructor(
     private activeroute: ActivatedRoute
@@ -32,7 +33,6 @@ export class PreguntaPage implements OnInit {
       if (nav) {
         if (nav.extras.state) {
           this.usuario = nav.extras.state['usuario'];
-          this.usuario.setRespuestaSecreta('');
           return;
         }
       }
@@ -43,12 +43,11 @@ export class PreguntaPage implements OnInit {
   }
 
   public recuperarContrasena(): void {
-    if (this.usuario.respuestaSecreta) {
-      const usu: Usuario | undefined = this.usuario.responderPregunta(this.usuario.preguntaSecreta,this.usuario.respuestaSecreta);
-      if (usu) {
+    if (this.respuestaSecreta !== "") {
+      if (this.usuario.respuestaSecreta === this.respuestaSecreta) {
         const navigationExtras: NavigationExtras = {
           state: {
-            usuario: usu
+            usuario: this.usuario
           }
         };
         this.router.navigate(['/correcto'], navigationExtras);
@@ -58,6 +57,10 @@ export class PreguntaPage implements OnInit {
     }else{
       this.mostrarMensaje("No has ingresado la respuesta.");
     }
+  }
+
+  ingreso(){
+    this.router.navigate(['ingreso']);
   }
 
   async mostrarMensaje(mensaje: string, duracion?: number) {

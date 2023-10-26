@@ -1,7 +1,22 @@
-.marco {
-  padding: 16px;
-}
-
 .centrar-boton {
   text-align: center;
+}
+ion-card{
+  --background: rgba(0,0,0,0.5);
+  padding:10px;
+}
+ion-button{
+  --background: #F1B634;
+  max-width: 300px;
+  margin-top: 10px;
+}
+ion-item{
+  --background: rgba(0,0,0,0);
+}
+.items{
+  background-color: white;
+  border-radius: 5px;
+}
+ion-segment-button{
+  --ion-color-primary: white;
 }

@@ -1,5 +1,5 @@
-<div class="marco">
-
+<ion-card class="ion-text-center ion-padding-vertical">
+  <div class="items">
   <ion-item>
     <ion-input type="text" [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
     <ion-icon name="person-outline" slot="start"></ion-icon>
@@ -33,12 +33,11 @@
     <ion-input type="password" [(ngModel)]="repeticionPassword" label="Repetir contraseña" labelPlacement="floating"></ion-input>
     <ion-icon name="key-outline" slot="start"></ion-icon>
   </ion-item>
-
-  <br>
+  </div>
   <div class="centrar-boton">
     <ion-button (click)="actualizarPerfil()">
       Actualizar mis datos
     </ion-button>
   </div>
 
-</div>
+</ion-card>

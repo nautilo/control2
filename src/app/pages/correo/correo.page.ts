@@ -46,7 +46,9 @@ export class CorreoPage implements OnInit {
       this.router.navigate(['/incorrecto']);
     }
   }
-
+  ingreso(){
+    this.router.navigate(['ingreso']);
+  }
   async mostrarMensaje(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({
       message: mensaje,

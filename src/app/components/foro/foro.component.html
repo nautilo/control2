@@ -1,9 +1,8 @@
-<ion-content [fullscreen]="true">
   <a #topOfPage href="#topOfPage"></a>
   <ion-card>
 
     <ion-card-header>
-      <ion-card-title>Ingresa tu publicación</ion-card-title>
+      <ion-card-title><h2>Ingresa tu publicación</h2></ion-card-title>
     </ion-card-header>
 
     <ion-item class="ion-padding-horizontal">
@@ -22,10 +21,14 @@
   </ion-card>
 
   <ion-card class="sin-bordes">
-    <ion-card-title class="con-padding-top">Publicaciones recientes</ion-card-title>
+    <ion-card-title class="con-padding-top">
+      <div class="publicaciones-recientes">
+      <h3>Publicaciones recientes</h3>
+    </div>
+    </ion-card-title>
   </ion-card>
 
-  <ion-card *ngFor="let pub of publicaciones">
+  <ion-card *ngFor="let pub of publicaciones" class="publicacion">
 
     <ion-card-header>
       <h4>
@@ -50,5 +53,3 @@
     </div>
 
   </ion-card>
-
-</ion-content>

@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
 })
 export class MiclaseComponent  implements ViewWillEnter {
-
   asistencia= new Asistencia();
 
   constructor(private bd: DataBaseService) { 
@@ -25,5 +24,4 @@ export class MiclaseComponent  implements ViewWillEnter {
   ionViewWillEnter() {
     this.asistencia = new Asistencia();
   }
-
 }

@@ -1,8 +1,13 @@
 h1, h2, h3, p{
   color:white;
+  margin-bottom: 0px;
+}
+h1{
+  margin-top:10px;
 }
 ion-card{
   --background: rgba(0,0,0,0.5);
+  padding:0px;
 }
 .tabla {
   border: 1px solid #ccc; /* Establece un borde gris para el contenedor de la tabla */
