@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div style="display: flex; align-items: center;">
+      <img class="logo" src="../../../assets/img/logo-duoc.svg">
+      <ion-title #titulo style="flex-grow: 1;">
+        <p class="titulo-animado">Sistema de asistencia Duoc UC</p>
+      </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+  <h1 style="margin-top: 30px;">Crear una nueva cuenta</h1></div>
+  <ion-card class="ion-text-center ion-padding-vertical">
+    <div class="items">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.apellido" label="Apellidos" labelPlacement="floating"></ion-input>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating"></ion-input>
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.preguntaSecreta" label="Pregunta secreta" labelPlacement="floating"></ion-input>
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.respuestaSecreta" label="Respuesta secreta" labelPlacement="floating"></ion-input>
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating"></ion-input>
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="repeticionPassword" label="Repetir contraseña" labelPlacement="floating"></ion-input>
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+    </ion-item>
+    </div>
+    <div class="centrar-boton">
+      <ion-button (click)="crearCuenta()">
+        Registrarme
+      </ion-button>
+    </div>
+  
+  </ion-card>
+
+    <div class="ion-text-center">
+      <ion-button id="ingresar" (click)="ingresar()" shape="round" style="max-width: 190px; font-size: 12px;">Ir a iniciar sesión</ion-button>
+    </div>
+
+
+</ion-content>

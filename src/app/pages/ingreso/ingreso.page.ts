@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 })
 export class IngresoPage implements OnInit {
 
-  correo = 'atorres@duocuc.cl';
-  password = '1234';
+  correo = '';
+  password = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -28,6 +28,9 @@ export class IngresoPage implements OnInit {
 
   recuperarContrasena(){
     this.router.navigate(['correo']);
+  }
+  crearCuenta(){
+    this.router.navigate(['crearcuenta']);
   }
 
 }
