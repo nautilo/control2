@@ -42,7 +42,7 @@ export const showToast = async (message:string, duration?: number) => {
 export const showAlert = async (header: string, message: string): Promise<void> => {
     return new Promise((resolve) => {
         let alert = new AlertController().create({
-            header, message, cssClass: 'custom-alert', buttons: [{ text: 'Aceptar', handler: () => resolve() }]
+            header, message, cssClass: 'custom-alert', buttons: [{ id: 'btn-aceptar',text: 'Aceptar', handler: () => resolve() }]
         }).then((value: HTMLIonAlertElement) => value.present());
     });
 }
