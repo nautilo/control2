@@ -2,9 +2,11 @@
   <!-- Título del card -->
   <ion-card-title class="ion-text-center">
     <ion-label>
+      <div>
       <h1 #itemBienvenido>¡Bienvenido!</h1>
       <br>
-      <h1 *ngIf="usuario" #itemNombre>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+      <h1 id="saludo" *ngIf="usuario" #itemNombre>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+      </div>
       <br>
       <h2>Escanea el código QR para registrar tu asistencia a clases</h2>
     </ion-label>
