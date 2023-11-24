@@ -4,10 +4,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
-import { APIClientService, Publicacion } from 'src/app/services/apiclient.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/data-base.service';
-import { showAlertDUOC, showAlertError } from 'src/app/tools/message-routines';
+import { showAlertDUOC } from 'src/app/tools/message-routines';
 
 @Component({
   selector: 'app-admin',
@@ -34,12 +33,6 @@ export class AdminComponent implements OnInit  {
     const usu = await this.authService.leerUsuarioAutenticado();
     this.usuario = usu!;
   }
-
-
-  mensajePublicacion(accion: string, id: Publicacion) {
-    showAlertDUOC(`La publicación ${id} fue ${accion} correctamente`);
-  }
-
 
   eliminarUsuario(usu: any) {
     if (usu.correo == 'admin') {

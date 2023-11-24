@@ -11,6 +11,7 @@ import { DataBaseService } from 'src/app/services/data-base.service';
 import { APIClientService } from 'src/app/services/apiclient.service';
 import { AnimationController, NavController} from '@ionic/angular';
 import { AdminComponent } from 'src/app/components/admin/admin.component';
+import { Usuario } from 'src/app/model/usuario';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -22,7 +23,8 @@ import { AdminComponent } from 'src/app/components/admin/admin.component';
 })
 export class InicioPage implements OnInit {
   @ViewChild('titulo',{read:ElementRef}) itemTitulo!: ElementRef;
-  componente_actual = 'qr';
+  usuario = new Usuario();
+  componente_actual = '';
 
   constructor(
     private authService: AuthService, 
@@ -30,8 +32,14 @@ export class InicioPage implements OnInit {
     private api: APIClientService,
     private animationController: AnimationController) { }
 
-  ngOnInit() {
-    this.componente_actual = 'qr';
+  async ngOnInit() {
+    const usu = await this.authService.leerUsuarioAutenticado();
+    this.usuario = usu!;
+    if (this.usuario.correo !== 'admin'){
+      this.componente_actual = 'qr';
+    } else {
+      this.componente_actual = 'foro';
+    }
     this.bd.datosQR.next('');
   }
   public ngAfterViewInit(): void {

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { AnimationController, IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/data-base.service';
@@ -16,13 +16,24 @@ import { Router } from '@angular/router';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CrearcuentaPage{
-
+  @ViewChild('titulo',{read:ElementRef}) itemTitulo!: ElementRef;
   usuario = new Usuario();
   repeticionPassword = '';
 
-  constructor(private authService: AuthService, private bd: DataBaseService, private router: Router) { }
+  constructor(private authService: AuthService, private bd: DataBaseService, private router: Router, private animationController: AnimationController) { }
 
   ionViewWillEnter() {
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(-30%)', 'translate(100%)')
+        .fromTo('opacity', 0, 1);
+
+      animation.play();
+    }
     this.usuario = new Usuario();
     this.repeticionPassword = '';  
   }
@@ -50,7 +61,7 @@ export class CrearcuentaPage{
     this.authService.setUsuarioAutenticado(this.usuario);
     showToast('Sus datos fueron actualizados');
   }
-  crearCuenta() {
+  async crearCuenta() {
     if (!this.mostrarMensaje('nombre', this.usuario.nombre)) return;
     if (!this.mostrarMensaje('apellidos', this.usuario.apellido)) return;
     if (!this.mostrarMensaje('correo', this.usuario.correo)) return;
@@ -59,6 +70,11 @@ export class CrearcuentaPage{
     if (!this.mostrarMensaje('contraseña', this.usuario.password)) return;
     if (this.usuario.password !== this.repeticionPassword) {
       showAlertDUOC(`Las contraseñas escritas deben ser iguales.`);
+      return;
+    }
+    const usuarioExistente = await this.bd.leerUsuario(this.usuario.correo);
+    if (usuarioExistente) {
+      showAlertDUOC(`Registro fallido. El correo ${this.usuario.correo} ya está registrado.`);
       return;
     }
     this.bd.guardarUsuario(this.usuario);
