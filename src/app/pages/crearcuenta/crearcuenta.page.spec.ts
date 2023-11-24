@@ -1,17 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
 import { CrearcuentaPage } from './crearcuenta.page';
+import { expect } from '@jest/globals';
 
 describe('CrearcuentaPage', () => {
   let component: CrearcuentaPage;
   let fixture: ComponentFixture<CrearcuentaPage>;
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ CrearcuentaPage ],
+      imports: [IonicModule.forRoot()]
+    }).compileComponents();
 
-  beforeEach(async(() => {
     fixture = TestBed.createComponent(CrearcuentaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it('Se debería poder crear la página crear cuenta', () => {
     expect(component).toBeTruthy();
   });
 });
