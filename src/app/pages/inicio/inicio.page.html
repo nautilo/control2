@@ -10,10 +10,10 @@
   
   <ion-toolbar>
     <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
-      <ion-segment-button value="qr" class="tab">
+      <ion-segment-button *ngIf="!esAdmin()" value="qr" class="tab">
         <ion-label>QR</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="miclase" class="tab">
+      <ion-segment-button *ngIf="!esAdmin()" value="miclase" class="tab">
         <ion-label>Mi clase</ion-label>
       </ion-segment-button>
       <ion-segment-button value="foro" class="tab">
@@ -21,6 +21,9 @@
       </ion-segment-button>
       <ion-segment-button value="misdatos" class="tab">
         <ion-label>Mis datos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="esAdmin()" value="admin" class="tab">
+        <ion-label>Admin</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -32,6 +35,7 @@
   <app-miclase [hidden]="componente_actual !== 'miclase'"></app-miclase>
   <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
   <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
+  <app-admin [hidden]="componente_actual !== 'admin'"></app-admin>
 
     <div class="ion-text-center">
       <ion-button id="cerrarsesion" (click)="cerrarSesion()" shape="round" style="max-width: 190px; font-size: 12px;">Cerrar sesión</ion-button>

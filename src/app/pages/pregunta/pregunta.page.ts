@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { AlertController, IonicModule } from '@ionic/angular';
-import { AnimationController} from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -22,8 +21,6 @@ export class PreguntaPage implements OnInit {
   constructor(
     private activeroute: ActivatedRoute
   , private router: Router
-  , private alertController: AlertController
-  , private animationController: AnimationController
   , private toastController: ToastController) {
 
     this.usuario = new Usuario();

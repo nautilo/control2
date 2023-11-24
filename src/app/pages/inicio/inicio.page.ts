@@ -10,13 +10,14 @@ import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.componen
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { APIClientService } from 'src/app/services/apiclient.service';
 import { AnimationController, NavController} from '@ionic/angular';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule,
-    QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent,
+    QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent, AdminComponent
   ],
 })
 export class InicioPage implements OnInit {
@@ -56,5 +57,11 @@ export class InicioPage implements OnInit {
   cerrarSesion() {
     this.authService.logout();
   }
+
+  esAdmin(): boolean {
+    const usuario = this.authService.usuarioAutenticado.value;
+    return !!usuario && usuario.correo === 'admin';
+  }
+  
 
 }

@@ -82,4 +82,9 @@ export class DataBaseService {
     await this.db.run(sql, [sesionActiva, correo]);
     await this.leerUsuarios();
   }
+  
+  getListaUsuarios(): Observable<Usuario[]> {
+    return this.listaUsuarios.asObservable();
+  }
+
 }
