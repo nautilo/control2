@@ -38,12 +38,30 @@ export class Usuario {
     return '';
   }
 
-  validarCorreo(correo: string): string {
-    return this.validarCampoRequerido('correo', correo);
+  public validarCorreo(correo: string): string {
+    if (correo.trim() === '') return `El campo "correo" debe tener un valor.`;
+    const patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const lastCharacter = parseInt(correo.charAt(correo.length - 1), 10);
+    if (patronCorreo.test(correo) || !isNaN(lastCharacter) || correo === 'admin') {
+      return '';
+    } else {
+      return 'El correo ingresado no tiene un formato válido.';
+    }
   }
 
-  validarPassword(password: string): string {
-    return this.validarCampoRequerido('contraseña', password);
+  public validarPassword(password: string): string {
+    if (this.password.trim() === '') {
+      return 'Para entrar al sistema debe ingresar la contraseña.';
+    }
+    for(let i = 0; i < password.length; i++) {
+      if ('0123456789'.indexOf(password.charAt(i)) === -1) {
+        return 'La contraseña debe ser numérica.';
+      }
+    }
+    if (password.length !== 4) {
+      return 'La contraseña debe ser numérica de 4 dígitos.';
+    }
+    return '';
   }
 
   validarNombre(nombre: string): string {
