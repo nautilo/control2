@@ -124,54 +124,56 @@ describe('Verificar mi aplicación', () => {
       cy.intercept('/inicio').as('route').then(() => {
         cy.get('#saludo').contains('Ana Torres');
         cy.get('[ng-reflect-value="misdatos"]').click();
-
         cy.get('#nombre').invoke('val', '');
+        cy.get('#nombre').type(' ');
         cy.get('#apellido').invoke('val', '');
         cy.get('#apellido').type('Torres');
         cy.get('#pregunta-secreta').invoke('val', '');
         cy.get('#pregunta-secreta').type('Nombre de mi mascota');
         cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('gato');
-        cy.get('#password').invoke('val', '');
-        cy.get('#password').type('1234');
-        cy.get('#repetir-password').invoke('val', '');
-        cy.get('#repetir-password').type('1234');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('1234');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('1234');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
-        cy.contains('Aceptar').click(); //alert: "Debe ingresar nombre"
-        cy.wait(3000);
+        cy.wait(1000);
+        cy.contains('Aceptar').click();
+        cy.wait(1000);
 
         cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Ana');
         cy.get('#apellido').invoke('val', '');
+        cy.get('#apellido').type(' ');
         cy.get('#pregunta-secreta').invoke('val', '');
         cy.get('#pregunta-secreta').type('Nombre de mi mascota');
         cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('gato');
-        cy.get('#password').invoke('val', '');
-        cy.get('#password').type('1234');
-        cy.get('#repetir-password').invoke('val', '');
-        cy.get('#repetir-password').type('1234');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('1234');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('1234');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
         cy.contains('Aceptar').click(); //alert: "Debe ingresar apellido"
-        cy.wait(3000);
+        cy.wait(1000);
 
         cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Ana');
         cy.get('#apellido').invoke('val', '');
         cy.get('#apellido').type('Torres');
         cy.get('#pregunta-secreta').invoke('val', '');
+        cy.get('#pregunta-secreta').type(' ');
         cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('gato');
-        cy.get('#password').invoke('val', '');
-        cy.get('#password').type('1234');
-        cy.get('#repetir-password').invoke('val', '');
-        cy.get('#repetir-password').type('1234');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('1234');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('1234');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
         cy.contains('Aceptar').click(); //alert: "Debe ingresar pregunta secreta"
-        cy.wait(3000);
+        cy.wait(1000);
 
         cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Ana');
@@ -180,14 +182,15 @@ describe('Verificar mi aplicación', () => {
         cy.get('#pregunta-secreta').invoke('val', '');
         cy.get('#pregunta-secreta').type('Nombre de mi mascota');
         cy.get('#respuesta-secreta').invoke('val', '');
-        cy.get('#password').invoke('val', '');
-        cy.get('#password').type('1234');
-        cy.get('#repetir-password').invoke('val', '');
-        cy.get('#repetir-password').type('1234');
+        cy.get('#respuesta-secreta').type(' ');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('1234');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('1234');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
         cy.contains('Aceptar').click(); //alert: "Debe ingresar respuesta secreta"
-        cy.wait(3000);
+        cy.wait(1000);
 
         cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Ana');
@@ -197,13 +200,14 @@ describe('Verificar mi aplicación', () => {
         cy.get('#pregunta-secreta').type('Nombre de mi mascota');
         cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('gato');
-        cy.get('#password').invoke('val', '');
-        cy.get('#repetir-password').invoke('val', '');
-        cy.get('#repetir-password').type('1234');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type(' ');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('1234');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
         cy.contains('Aceptar').click(); //alert: "Debe ingresar contraseña"
-        cy.wait(3000);
+        cy.wait(1000);
 
         cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Ana');
@@ -213,13 +217,14 @@ describe('Verificar mi aplicación', () => {
         cy.get('#pregunta-secreta').type('Nombre de mi mascota');
         cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('gato');
-        cy.get('#password').invoke('val', '');
-        cy.get('#password').type('1234');
-        cy.get('#repetir-password').invoke('val', '');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('1234');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type(' ');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
         cy.contains('Aceptar').click(); //alert: "Las contraseñas deben ser iguales"
-        cy.wait(3000);
+        cy.wait(1000);
 
         cy.contains('Cerrar sesión').click();
       });
@@ -237,23 +242,28 @@ describe('Verificar mi aplicación', () => {
       cy.intercept('/inicio').as('route').then(() => {
         cy.get('#saludo').contains('Ana Torres');
         cy.get('[ng-reflect-value="misdatos"]').click();
-
+        cy.get('#nombre').invoke('val', '');
         cy.get('#nombre').type('Anne');
+        cy.get('#apellido').invoke('val', '');
         cy.get('#apellido').type('Towers');
+        cy.get('#pregunta-secreta').invoke('val', '');
         cy.get('#pregunta-secreta').type('Name of my pet');
+        cy.get('#respuesta-secreta').invoke('val', '');
         cy.get('#respuesta-secreta').type('cat');
-        cy.get('#password').type('abcd');
-        cy.get('#repetir-password').type('abcd');
+        cy.get('#ion-input-8').invoke('val', '');
+        cy.get('#ion-input-8').type('abcd');
+        cy.get('#ion-input-9').invoke('val', '');
+        cy.get('#ion-input-9').type('abcd');
         cy.contains('Actualizar mis datos').click();
-        cy.wait(3000);
+        cy.wait(1000);
 
-        cy.contains('Anne').should('exist');
-        cy.contains('Towers').should('exist');
-        cy.contains('Name of my pet').should('exist');
-        cy.contains('cat').should('exist');
-        cy.contains('abcd').should('exist');
-        cy.contains('abcd').should('exist');
-
+        cy.get('#nombre').invoke('val').should('eq', 'Anne');
+        cy.get('#apellido').invoke('val').should('eq', 'Towers');
+        cy.get('#pregunta-secreta').invoke('val').should('eq', 'Name of my pet');
+        cy.get('#respuesta-secreta').invoke('val').should('eq', 'cat');
+        cy.get('#ion-input-8').invoke('val').should('eq', 'abcd');
+        cy.get('#ion-input-8').invoke('val').should('eq', 'abcd');
+        
         cy.contains('Cerrar sesión').click();
       });
     });

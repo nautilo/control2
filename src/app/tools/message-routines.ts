@@ -102,7 +102,7 @@ export const showAlertDUOC = async (message: string, callAdmin?: boolean, tryAga
         let alert = new AlertController().create({
             header: getAppName(),
             message: getSpecialMessage(message, callAdmin, tryAgain),
-            buttons: [{ text: 'Aceptar', handler: () => resolve() }]
+            buttons: [{ id: 'btn-aceptar', text: 'Aceptar', handler: () => resolve() }]
         }).then((value: HTMLIonAlertElement) => value.present());
     });
 }
