@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit  {
   }
 
   eliminarUsuario(usu: any) {
-    if (usu.correo == 'admin') {
+    if (usu.correo == 'admin@duocuc.cl') {
       showAlertDUOC('No se puede eliminar el usuario administrador.');
       return;
     } else {

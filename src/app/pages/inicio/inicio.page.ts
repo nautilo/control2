@@ -68,7 +68,7 @@ export class InicioPage implements OnInit {
 
   esAdmin(): boolean {
     const usuario = this.authService.usuarioAutenticado.value;
-    return !!usuario && usuario.correo === 'admin';
+    return !!usuario && usuario.correo === 'admin@duocuc.cl';
   }
   
 

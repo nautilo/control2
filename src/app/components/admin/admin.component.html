@@ -12,10 +12,10 @@
     <h5>{{ usu.correo }}</h5>
 </ion-card-content>
 <div class="alinear-derecha">
-  <ion-button *ngIf="usu.correo !== 'admin'" id="btn-eliminar" (click)="eliminarUsuario(usu)">
+  <ion-button *ngIf="usu.correo !== 'admin@duocuc.cl'" id="btn-eliminar" (click)="eliminarUsuario(usu)">
     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
   </ion-button>
-  <ion-button [disabled]="true" *ngIf="usu.correo == 'admin'" id="btn-eliminar" (click)="eliminarUsuario(usu)">
+  <ion-button [disabled]="true" *ngIf="usu.correo == 'admin@duocuc.cl'" id="btn-eliminar" (click)="eliminarUsuario(usu)">
     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
   </ion-button>
 </div>

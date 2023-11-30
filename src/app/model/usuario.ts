@@ -42,7 +42,7 @@ export class Usuario {
     if (correo.trim() === '') return `El campo "correo" debe tener un valor.`;
     const patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const lastCharacter = parseInt(correo.charAt(correo.length - 1), 10);
-    if (patronCorreo.test(correo) || !isNaN(lastCharacter) || correo === 'admin') {
+    if (patronCorreo.test(correo) || !isNaN(lastCharacter) || correo === 'admin@duocuc.cl') {
       return '';
     } else {
       return 'El correo ingresado no tiene un formato válido.';
